@@ -1,0 +1,2 @@
+[31/7/2025, 7:30:36 pm] layer "Unlock exclusive roles at top companies. Only pre-interviewed, ": Expected end of input but "," found.
+[31/7/2025, 7:30:36 pm] layer "Nav icon.png": Duplicate path: Nav icon.png
