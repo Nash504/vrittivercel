@@ -27,7 +27,7 @@ export default function HeroSection() {
         <div className="max-w-3xl px-4 py-8 text-left lg:px-20">
           {/* Hero Text from the Image */}
           <h1 className="text-5xl font-bold text-orange-400 mb-6 md:text-6xl">
-            Who We Are
+            Who We Are iwd
           </h1>
           <p className="text-md text-gray-200 leading-relaxed md:text-md">
             Vritti is on a mission to transform careers and companies in the oil
