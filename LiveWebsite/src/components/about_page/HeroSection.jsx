@@ -3,7 +3,7 @@ import Navbar from "../Navbar";
 
 // Note: You will need to provide the actual image for the background.
 // The image should contain the hand holding the logo graphic on the right side.
-import about from "../../assets/about.jpeg";
+import about from "../../assets/about.JPEG";
 
 export default function HeroSection() {
   const heroStyle = {
