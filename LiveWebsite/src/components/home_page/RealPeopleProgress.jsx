@@ -1,5 +1,10 @@
 // components/RealPeopleProgress.jsx
-import React from "react";
+
+// 1. Add "use client" to enable interactivity and hooks
+"use client";
+
+// 2. Import useState for state management
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -19,7 +24,6 @@ export default function RealPeopleProgress() {
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    // Optional: Keep the original background color as a fallback
     backgroundColor: "#1A202C",
   };
   const testimonials = [
@@ -37,12 +41,33 @@ export default function RealPeopleProgress() {
     },
     {
       type: "For Individuals",
-      text: "The training and interview process boosted my confidence. I got real feedback and landed a job that fit my skills.",
-      name: "Amir Truman",
-      title: "Electrician",
+      text: "I was skeptical at first, but the tailored approach helped me highlight my unique skills effectively.",
+      name: "Priya Sharma",
+      title: "Project Manager",
     },
-    // Add more testimonials here if needed
+    {
+      type: "For Employers",
+      text: "Finding qualified talent was a huge challenge. Vritti streamlined our hiring process significantly.",
+      name: "David Chen",
+      title: "Operations Head",
+    },
   ];
+
+  // 3. Add state to track the current testimonial index
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // 4. Create functions to handle navigation
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
   return (
     <section>
@@ -60,45 +85,63 @@ export default function RealPeopleProgress() {
       {/* Bottom half with testimonials and navigation */}
       <div className="relative z-10 -mt-20 sm:-mt-24 bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 shadow-2xl rounded-t-3xl">
         <div className="max-w-6xl mx-auto">
-          <div className="flex overflow-x-auto snap-x snap-mandatory hides-scrollbar justify-start sm:justify-center gap-4">
-            {testimonials.map((testimonial, index) => (
-              <Card
-                key={index}
-                className="w-72 sm:w-80 flex-shrink-0 shadow-md"
-              >
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base sm:text-lg">
-                    {testimonial.type}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="py-2">
-                  <p className="text-gray-700 text-sm sm:text-base">
-                    {testimonial.text}
-                  </p>
-                </CardContent>
-                <CardFooter className="text-xs sm:text-sm pt-3">
-                  {testimonial.name}, {testimonial.title}
-                </CardFooter>
-              </Card>
-            ))}
+          {/* Add overflow-hidden to the parent to hide the other cards */}
+          <div className="overflow-hidden">
+            {/* 5. Add a style to the inner container to make it slide */}
+            <div
+              className="flex gap-4 transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {testimonials.map((testimonial, index) => (
+                // Adjust card width to take up the full container width
+                <div key={index} className="w-full flex-shrink-0">
+                  <Card className="shadow-md w-full">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-base sm:text-lg">
+                        {testimonial.type}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="py-2 min-h-[100px]">
+                      <p className="text-gray-700 text-sm sm:text-base">
+                        "{testimonial.text}"
+                      </p>
+                    </CardContent>
+                    <CardFooter className="text-xs sm:text-sm pt-3">
+                      - {testimonial.name}, {testimonial.title}
+                    </CardFooter>
+                  </Card>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Carousel Navigation */}
           <div className="flex justify-center items-center mt-6 sm:mt-8">
+            {/* 6. Add onClick handlers to the buttons */}
             <Button
+              onClick={handlePrev}
               variant="ghost"
               size="icon"
               className="rounded-full w-8 h-8 sm:w-10 sm:h-10 text-gray-500"
             >
               <ChevronLeft size={24} />
             </Button>
+
+            {/* 7. Make the dots dynamic */}
             <div className="flex space-x-2 mx-4">
-              <span className="w-2 h-2 bg-gray-700 rounded-full"></span>
-              <span className="w-2 h-2 bg-gray-300 rounded-full"></span>
-              <span className="w-2 h-2 bg-gray-300 rounded-full"></span>
-              <span className="w-2 h-2 bg-gray-300 rounded-full"></span>
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    currentIndex === index ? "bg-gray-700" : "bg-gray-300"
+                  }`}
+                />
+              ))}
             </div>
+
             <Button
+              onClick={handleNext}
               variant="ghost"
               size="icon"
               className="rounded-full w-8 h-8 sm:w-10 sm:h-10 text-gray-500"

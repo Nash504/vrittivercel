@@ -1,25 +1,25 @@
 import React from "react";
-import Header from "../../components/Header";
-import HeroSection from "../../components/home_page/HeroSection";
-import HowVrittiWorks from "../../components/home_page/HowVrittiWorks";
-import WhyChooseVritti from "../../components/home_page/WhyChooseVritti";
-import SkillsOpportunity from "../../components/home_page/SkillsOpportunity";
-import RealPeopleProgress from "../../components/home_page/RealPeopleProgress";
-import JobPlatformSection from "../../components/home_page/JobPlatformSection";
-import Footer from "../../components/Footer";
 
+// Page-specific components
+import CTA from "../../components/about_page/CTA";
+import HeroSection from "../../components/about_page/HeroSection";
+import Meet from "../../components/about_page/MeetTheTeam";
+import Mission from "../../components/about_page/Mission";
+import OurStory from "../../components/about_page/OurStory";
+import Partners from "../../components/about_page/Partners";
+import Footer from "../../components/Footer";
+import WhyVritti from "../../components/about_page/WhyVritti";
 export default function VrittiLandingPage() {
   return (
     <div className="min-h-screen">
       <HeroSection />
+      <Mission />
 
-      <section className="py-8">
-        <HowVrittiWorks />
-      </section>
-
-      <section className="py-8">
-        <WhyChooseVritti />
-      </section>
+      <OurStory />
+      <WhyVritti />
+      <Meet />
+      <Partners />
+      <CTA />
 
       <Footer />
     </div>

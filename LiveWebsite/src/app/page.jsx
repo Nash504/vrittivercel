@@ -25,11 +25,11 @@ export default function VrittiLandingPage() {
         <SkillsOpportunity />
       </section>
 
-      <section className="py-8">
+      <section>
         <RealPeopleProgress />
       </section>
 
-      <section className="py-8">
+      <section>
         <JobPlatformSection />
       </section>
 

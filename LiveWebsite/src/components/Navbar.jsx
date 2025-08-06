@@ -4,29 +4,42 @@ import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import Link from "next/link";
 import { Menu } from "lucide-react";
+import Image from "next/image";
+
+const VrittiLogo = () => (
+  <div>
+    <Image
+      // Correct path to the SVG in the public directory
+      src="/logos/Vritti.svg"
+      alt="Vritti Logo"
+      width={80} // Set an appropriate width
+      style={{
+        filter: "drop-shadow(0 0 0.75rem rgba(255,255,255,0.2))",
+        opacity: 0.9,
+      }}
+      height={20} // Set an appropriate height
+    />
+  </div>
+);
 
 const Navbar = () => {
   return (
-    <Card className="mb-1 relative overflow-hidden border border-white/10 shadow-2xl backdrop-blur-xl bg-black/30 rounded-3xl mx-3 sm:mx-6 mt-2">
-      {/* Glassmorphism overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/8 to-white/5 backdrop-blur-lg rounded-3xl"></div>
+    <Card className="mb-1 relative overflow-hidden border border-white/20 shadow-2xl backdrop-blur-2xl bg-black/40 rounded-3xl mx-3 sm:mx-6 mt-2">
+      {/* Enhanced glassmorphism overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/3 backdrop-blur-xl rounded-3xl"></div>
 
-      {/* Subtle border glow */}
-      <div className="absolute inset-0 rounded-3xl border border-white/20 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]"></div>
+      {/* Secondary glass layer for depth */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/2 to-transparent backdrop-blur-sm rounded-3xl"></div>
+
+      {/* Enhanced border glow with glass effect */}
+      <div className="absolute inset-0 rounded-3xl border border-white/30 shadow-[inset_0_2px_4px_0_rgba(255,255,255,0.1),0_0_20px_rgba(255,255,255,0.05)]"></div>
 
       {/* Main Navbar container */}
-      <div className="relative z-10 flex items-center justify-between px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4">
+      <div className="relative z-10 flex items-center justify-between px-4 sm:px-6 lg:px-8 py-2">
         {/* Logo section */}
         <div className="flex items-center space-x-2 sm:space-x-3">
           <div className="relative">
-            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-orange-400 to-orange-600 transform rotate-45"></div>
-            <div className="absolute top-0.5 left-0.5 sm:top-1 sm:left-1 w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-br from-orange-300 to-orange-500 transform rotate-45"></div>
-          </div>
-          <div className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-wider">
-            VRITTI
-          </div>
-          <div className="text-xs text-gray-400 ml-2 hidden xl:block">
-            SOLUTIONS FOR A POWERFUL FUTURE
+            <VrittiLogo />
           </div>
         </div>
 
@@ -79,7 +92,7 @@ const Navbar = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden text-white hover:bg-white/10 rounded-full"
+              className="lg:hidden text-white hover:bg-white/10 hover:backdrop-blur-sm rounded-full border border-white/20"
             >
               <Menu className="h-6 w-6" />
               <span className="sr-only">Toggle menu</span>
@@ -87,16 +100,12 @@ const Navbar = () => {
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="w-[300px] sm:w-[350px] bg-black/95 backdrop-blur-xl border-white/10 text-white"
+            className="w-[300px] sm:w-[350px] bg-black/85 backdrop-blur-2xl border-white/20 text-white shadow-2xl"
           >
             {/* Mobile Logo */}
             <div className="flex items-center space-x-3 mb-8 pt-4 pl-4">
               <div className="relative">
-                <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 transform rotate-45"></div>
-                <div className="absolute top-1 left-1 w-6 h-6 bg-gradient-to-br from-orange-300 to-orange-500 transform rotate-45"></div>
-              </div>
-              <div className="text-xl font-bold text-white tracking-wider">
-                VRITTI
+                <VrittiLogo />
               </div>
             </div>
 
@@ -106,7 +115,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     href="/"
-                    className="block text-lg font-medium text-white/90 hover:text-white transition-all duration-300 uppercase tracking-wide py-3 border-b border-white/10 hover:border-orange-400"
+                    className="block text-lg font-medium text-white/90 hover:text-white transition-all duration-300 uppercase tracking-wide py-3 border-b border-white/10 hover:border-orange-400/60 hover:bg-white/5 hover:backdrop-blur-sm px-4 rounded-lg"
                   >
                     HOME
                   </Link>
@@ -114,7 +123,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     href="/about"
-                    className="block text-lg font-medium text-white/90 hover:text-white transition-all duration-300 uppercase tracking-wide py-3 border-b border-white/10 hover:border-orange-400"
+                    className="block text-lg font-medium text-white/90 hover:text-white transition-all duration-300 uppercase tracking-wide py-3 border-b border-white/10 hover:border-orange-400/60 hover:bg-white/5 hover:backdrop-blur-sm px-4 rounded-lg"
                   >
                     ABOUT US
                   </Link>
@@ -122,7 +131,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     href="/contact"
-                    className="block text-lg font-medium text-white/90 hover:text-white transition-all duration-300 uppercase tracking-wide py-3 border-b border-white/10 hover:border-orange-400"
+                    className="block text-lg font-medium text-white/90 hover:text-white transition-all duration-300 uppercase tracking-wide py-3 border-b border-white/10 hover:border-orange-400/60 hover:bg-white/5 hover:backdrop-blur-sm px-4 rounded-lg"
                   >
                     CONTACT US
                   </Link>
