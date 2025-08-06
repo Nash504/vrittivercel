@@ -5,7 +5,7 @@ import {
   CardTitle,
   CardContent,
 } from "../../components/ui/card";
-import why from "../../assets/why.png";
+import why from "../../assets/Why.png";
 import card1 from "../../assets/card1.png";
 import card2 from "../../assets/card2.png";
 import card3 from "../../assets/card3.png";
