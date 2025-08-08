@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { ArrowRight, MoveUpRight } from "lucide-react";
 import Navbar from "../Navbar";
@@ -7,18 +8,23 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../ui/card"; // Assuming standard shadcn/ui path
-import { Button } from "../ui/button"; // Optional: for consistency
-import Hero from "../../assets/Hero.png"; // Adjust the path as necessary
+} from "../ui/card";
+import { Button } from "../ui/button";
+import Hero from "../../assets/Hero.png"; // Desktop image
+import HomePhone from "../../assets/home_phone.jpg"; // Mobile image
+import useIsMobile from "../../hooks/useIsMobile";
+
 export default function HeroSection() {
+  const isMobile = useIsMobile();
+
   const heroStyle = {
-    backgroundImage: `url(${Hero.src})`,
+    backgroundImage: `url(${isMobile ? HomePhone.src : Hero.src})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    // Optional: Keep the original background color as a fallback
     backgroundColor: "#1A202C",
   };
+
   return (
     <section
       className="relative min-h-screen overflow-hidden text-white"

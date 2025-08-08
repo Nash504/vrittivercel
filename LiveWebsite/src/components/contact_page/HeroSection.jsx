@@ -1,18 +1,19 @@
+"use client";
 import React from "react";
 import Navbar from "../Navbar";
-
-// Note: You will need to provide the actual image for the background.
-// I am assuming the path is correct based on your original code.
-import Contact from "../../assets/Contact.jpeg";
+import Contact from "../../assets/Contact.jpeg"; // Desktop image
+import ContactPhone from "../../assets/contact_phone.jpg"; // Mobile image
+import useIsMobile from "../../hooks/useIsMobile";
 
 export default function HeroSection() {
+  const isMobile = useIsMobile();
+
   const heroStyle = {
-    // This style block assumes 'Contact.jpeg' is the desired background image.
-    backgroundImage: `url(${Contact.src})`,
+    backgroundImage: `url(${isMobile ? ContactPhone.src : Contact.src})`,
     backgroundSize: "cover",
-    backgroundPosition: "center",
+    backgroundPosition: isMobile ? "center top" : "center", // focus on top for mobile
     backgroundRepeat: "no-repeat",
-    backgroundColor: "#000000", // Fallback to black for the dark theme
+    backgroundColor: "#000000",
   };
 
   return (
@@ -23,11 +24,15 @@ export default function HeroSection() {
       <Navbar />
 
       {/* Main Content Area */}
-      <div className="flex flex-grow items-center justify-start">
+      <div
+        className={`flex flex-grow items-center justify-start ${
+          isMobile ? "pt-54" : "pt-0"
+        }`} // pushes content lower only on mobile
+      >
         <div className="max-w-4xl px-4 text-left lg:px-20">
-          {/* Hero Text from the Image */}
+          {/* Hero Text */}
           <p className="text-2xl font-bold leading-tight md:text-5xl lg:text-6xl">
-            <span className="text-orange-500">Have a question, </span>{" "}
+            <span className="text-orange-500">Have a question, </span>
             partnership inquiry, or need support?
           </p>
           <p className="mt-4 max-w-2xl text-md text-gray-300">

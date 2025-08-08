@@ -6,40 +6,35 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 
-const VrittiLogo = () => (
+const VrittiLogo = ({ size = 80 }) => (
   <div>
     <Image
-      // Correct path to the SVG in the public directory
       src="/logos/Vritti.svg"
       alt="Vritti Logo"
-      width={80} // Set an appropriate width
+      width={size}
+      height={size / 4}
       style={{
         filter: "drop-shadow(0 0 0.75rem rgba(255,255,255,0.2))",
         opacity: 0.9,
       }}
-      height={20} // Set an appropriate height
     />
   </div>
 );
 
 const Navbar = () => {
   return (
-    <Card className="mb-1 relative overflow-hidden border border-white/20 shadow-2xl backdrop-blur-2xl bg-black/40 rounded-3xl mx-3 sm:mx-6 mt-2">
-      {/* Enhanced glassmorphism overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/3 backdrop-blur-xl rounded-3xl"></div>
-
-      {/* Secondary glass layer for depth */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/2 to-transparent backdrop-blur-sm rounded-3xl"></div>
-
-      {/* Enhanced border glow with glass effect */}
-      <div className="absolute inset-0 rounded-3xl border border-white/30 shadow-[inset_0_2px_4px_0_rgba(255,255,255,0.1),0_0_20px_rgba(255,255,255,0.05)]"></div>
-
+    <Card className="mb-1 relative overflow-hidden border border-white/20 shadow-2xl backdrop-blur-2xl bg-black/40 rounded-3xl mx-2 sm:mx-6 mt-2">
       {/* Main Navbar container */}
-      <div className="relative z-10 flex items-center justify-between px-4 sm:px-6 lg:px-8 py-2">
-        {/* Logo section */}
+      <div className="relative z-10 flex items-center justify-between px-3 sm:px-6 lg:px-8 py-1 sm:py-2">
+        {/* Logo */}
         <div className="flex items-center space-x-2 sm:space-x-3">
-          <div className="relative">
-            <VrittiLogo />
+          {/* Desktop logo */}
+          <div className="hidden sm:block">
+            <VrittiLogo size={80} />
+          </div>
+          {/* Mobile logo (smaller) */}
+          <div className="sm:hidden">
+            <VrittiLogo size={60} />
           </div>
         </div>
 
@@ -86,7 +81,7 @@ const Navbar = () => {
           </Button>
         </div>
 
-        {/* Mobile Menu using Sheet */}
+        {/* Mobile Menu */}
         <Sheet>
           <SheetTrigger asChild>
             <Button
@@ -94,28 +89,26 @@ const Navbar = () => {
               size="icon"
               className="lg:hidden text-white hover:bg-white/10 hover:backdrop-blur-sm rounded-full border border-white/20"
             >
-              <Menu className="h-6 w-6" />
+              <Menu className="h-5 w-5" /> {/* smaller icon */}
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="w-[300px] sm:w-[350px] bg-black/85 backdrop-blur-2xl border-white/20 text-white shadow-2xl"
+            className="w-[260px] sm:w-[300px] bg-black/85 backdrop-blur-2xl border-white/20 text-white shadow-2xl p-4"
           >
             {/* Mobile Logo */}
-            <div className="flex items-center space-x-3 mb-8 pt-4 pl-4">
-              <div className="relative">
-                <VrittiLogo />
-              </div>
+            <div className="flex items-center mb-6">
+              <VrittiLogo size={50} />
             </div>
 
-            {/* Mobile Navigation Links */}
-            <nav className="mb-8 pl-6">
-              <ul className="space-y-6">
+            {/* Mobile Nav */}
+            <nav className="mb-6">
+              <ul className="space-y-4">
                 <li>
                   <Link
                     href="/"
-                    className="block text-lg font-medium text-white/90 hover:text-white transition-all duration-300 uppercase tracking-wide py-3 border-b border-white/10 hover:border-orange-400/60 hover:bg-white/5 hover:backdrop-blur-sm px-4 rounded-lg"
+                    className="block text-sm font-medium uppercase tracking-wide py-2 px-2 hover:text-orange-400 transition-all"
                   >
                     HOME
                   </Link>
@@ -123,7 +116,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     href="/about"
-                    className="block text-lg font-medium text-white/90 hover:text-white transition-all duration-300 uppercase tracking-wide py-3 border-b border-white/10 hover:border-orange-400/60 hover:bg-white/5 hover:backdrop-blur-sm px-4 rounded-lg"
+                    className="block text-sm font-medium uppercase tracking-wide py-2 px-2 hover:text-orange-400 transition-all"
                   >
                     ABOUT US
                   </Link>
@@ -131,7 +124,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     href="/contact"
-                    className="block text-lg font-medium text-white/90 hover:text-white transition-all duration-300 uppercase tracking-wide py-3 border-b border-white/10 hover:border-orange-400/60 hover:bg-white/5 hover:backdrop-blur-sm px-4 rounded-lg"
+                    className="block text-sm font-medium uppercase tracking-wide py-2 px-2 hover:text-orange-400 transition-all"
                   >
                     CONTACT US
                   </Link>
@@ -139,21 +132,14 @@ const Navbar = () => {
               </ul>
             </nav>
 
-            {/* Mobile Auth Buttons */}
-            <div className="flex flex-col gap-4 p-4">
-              <Button className="w-full px-6 py-3 text-sm font-medium text-black bg-orange-500 hover:bg-orange-600 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
+            {/* Mobile Auth */}
+            <div className="flex flex-col gap-3">
+              <Button className="w-full text-xs py-2 bg-orange-500 hover:bg-orange-600 rounded-full uppercase">
                 SIGN UP
               </Button>
-              <Button className="w-full px-6 py-3 text-sm font-medium text-black bg-orange-600 hover:bg-orange-700 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
+              <Button className="w-full text-xs py-2 bg-orange-600 hover:bg-orange-700 rounded-full uppercase">
                 LOGIN
               </Button>
-            </div>
-
-            {/* Mobile tagline */}
-            <div className="absolute bottom-6 left-6 right-6">
-              <div className="text-xs text-gray-400 text-center uppercase tracking-wider">
-                SOLUTIONS FOR A POWERFUL FUTURE
-              </div>
             </div>
           </SheetContent>
         </Sheet>

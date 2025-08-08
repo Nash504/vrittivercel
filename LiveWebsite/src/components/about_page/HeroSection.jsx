@@ -1,18 +1,19 @@
+"use client";
 import React from "react";
 import Navbar from "../Navbar";
-
-// Note: You will need to provide the actual image for the background.
-// The image should contain the hand holding the logo graphic on the right side.
-import about from "../../assets/about.JPEG";
+import about from "../../assets/about.jpeg"; // Desktop image
+import aboutPhone from "../../assets/about_phone.jpg"; // Mobile image
+import useIsMobile from "../../hooks/useIsMobile";
 
 export default function HeroSection() {
+  const isMobile = useIsMobile();
+
   const heroStyle = {
-    // This style block assumes 'about.jpeg' is the desired background image.
-    backgroundImage: `url(${about.src})`,
+    backgroundImage: `url(${isMobile ? aboutPhone.src : about.src})`,
     backgroundSize: "cover",
-    backgroundPosition: "center",
+    backgroundPosition: isMobile ? "center top" : "center center",
     backgroundRepeat: "no-repeat",
-    backgroundColor: "#000000", // Fallback to black for the dark theme
+    backgroundColor: "#000000", // fallback color
   };
 
   return (
@@ -25,16 +26,18 @@ export default function HeroSection() {
       {/* Main Content Area */}
       <div className="flex flex-grow items-center justify-start">
         <div className="max-w-3xl px-4 py-8 text-left lg:px-20">
-          {/* Hero Text from the Image */}
-          <h1 className="text-5xl font-bold text-orange-400 mb-6 md:text-6xl">
-            Who We Are iwd
+          {/* Hero Text */}
+          <h1 className="text-5xl md:text-6xl font-extrabold text-orange-500 mb-4 leading-tight">
+            Who We Are
           </h1>
-          <p className="text-md text-gray-200 leading-relaxed md:text-md">
+
+          <p className="text-lg md:text-xl text-gray-100 leading-relaxed font-medium mb-6">
             Vritti is on a mission to transform careers and companies in the oil
             & gas sector—by putting real skills and readiness at the heart of
             every opportunity.
           </p>
-          <p className="mt-4 text-md text-gray-200 leading-relaxed md:text-md">
+
+          <p className="text-base md:text-lg text-gray-300 leading-relaxed">
             We’re not just a placement agency. We are educators, mentors, and
             career partners, empowering individuals to upskill, certify, and
             step confidently into new roles. For employers, we offer a trusted
