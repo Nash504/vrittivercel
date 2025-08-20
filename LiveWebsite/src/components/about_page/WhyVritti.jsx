@@ -41,7 +41,7 @@ export default function WhyVritti() {
   ];
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20" style={whystyle}>
+    <section className="py-12 sm:py-16 lg:py-20 w-full" style={whystyle}>
       <div className=" mx-auto px-4">
         <h2 className="text-3xl font-bold mb-10 text-left text-blue-950">
           Why Vritti?

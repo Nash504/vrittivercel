@@ -16,7 +16,7 @@ const ChallengeCard = ({ number, text }) => (
 );
 export default function OurStorySection() {
   return (
-    <section className="bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
+    <section className="bg-gray-50 py-20 px-4 w-full sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="text-left mb-12">

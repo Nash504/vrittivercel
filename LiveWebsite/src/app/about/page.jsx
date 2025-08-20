@@ -11,15 +11,15 @@ import Footer from "../../components/Footer";
 import WhyVritti from "../../components/about_page/WhyVritti";
 export default function VrittiLandingPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-full">
       <HeroSection />
-      <Mission />
+      {/* <Mission /> */}
 
       <OurStory />
       <WhyVritti />
       <Meet />
       <Partners />
-      <CTA />
+      {/* <CTA /> */}
 
       <Footer />
     </div>

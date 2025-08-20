@@ -176,12 +176,16 @@ const Navbar = () => {
 
             {/* Mobile Auth */}
             <div className="flex flex-col gap-3">
-              <Button className="w-full text-xs py-2 bg-amber-500 hover:bg-amber-600 rounded-full uppercase">
-                SIGN UP
-              </Button>
-              <Button className="w-full text-xs py-2 bg-amber-600 hover:bg-amber-700 rounded-full uppercase">
-                LOGIN
-              </Button>
+              <Link href="https://user.vrittigroup.com/auth/user/register">
+                <Button className="w-full text-xs py-2 bg-amber-500 hover:bg-amber-600 rounded-full uppercase">
+                  SIGN UP
+                </Button>
+              </Link>
+              <Link href="https://user.vrittigroup.com/auth/user">
+                <Button className="w-full text-xs py-2 bg-amber-600 hover:bg-amber-700 rounded-full uppercase">
+                  LOGIN
+                </Button>
+              </Link>
             </div>
           </SheetContent>
         </Sheet>

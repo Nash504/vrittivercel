@@ -16,7 +16,7 @@ export default function PartnersSection() {
   ];
 
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white py-16 w-full">
       <div className="container mx-auto px-4">
         <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-12 text-center sm:text-left">
           Our Partners & Supporters

@@ -8,7 +8,7 @@ import missionGraphic from "../../assets/mission.png";
 export default function MissionSection() {
   return (
     // Section container with padding
-    <section className="py-16 px-4 sm:px-6 lg:px-8">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 w-full">
       <div className="max-w-6xl mx-auto sm:-mt-32">
         {/* The main container with relative positioning for the overlay and text */}
         <div className="relative overflow-hidden rounded-2xl md:rounded-4xl shadow-2xl h-80 md:h-96">
