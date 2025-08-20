@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Navbar from "../Navbar";
-import about from "../../assets/about.jpeg"; // Desktop image
+import about from "../../assets/about.JPEG"; // Desktop image
 import aboutPhone from "../../assets/about_phone.jpg"; // Mobile image
 import useIsMobile from "../../hooks/useIsMobile";
 

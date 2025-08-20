@@ -13,7 +13,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import useIsMobile from "../../hooks/useIsMobile";
 // Assuming these are your image imports
 import real_phone from "../../assets/real_phone.jpg";
-import real from "../../assets/real.png";
+import real from "../../assets/Real.png";
 
 export default function RealPeopleProgress() {
   const isMobile = useIsMobile();
@@ -100,13 +100,17 @@ export default function RealPeopleProgress() {
               // This logic for sliding is correct. Note that on desktop, it slides by 1/3rd.
               // To make it slide one card at a time, we'd adjust the logic.
               // This example keeps your original sliding behavior.
-              transform: `translateX(-${currentIndex * (100 / (isMobile ? 1 : 3))}%)`,
+              transform: `translateX(-${
+                currentIndex * (100 / (isMobile ? 1 : 3))
+              }%)`,
             }}
           >
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className={`flex-shrink-0 px-2 sm:px-3 ${isMobile ? "w-full" : "w-1/3"}`}
+                className={`flex-shrink-0 px-2 sm:px-3 ${
+                  isMobile ? "w-full" : "w-1/3"
+                }`}
               >
                 {/* The card styling is now simpler, as the container doesn't have conflicting styles */}
                 <Card className="rounded-xl h-full border-0 bg-white">
