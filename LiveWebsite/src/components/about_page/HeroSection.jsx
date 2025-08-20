@@ -27,11 +27,11 @@ export default function HeroSection() {
       <div className="flex flex-grow items-center justify-start">
         <div className="max-w-3xl sm:ml-20 px-4 sm:py-8 pt-40 text-left lg:px-4">
           {/* Hero Text */}
-          <p className="text-5xl md:text-5xl font-extrabold text-amber-500 mb-4 leading-tight">
+          <h1 className="text-5xl md:text-5xl font-bold text-amber-500 mb-4 leading-tight">
             Who We Are
-          </p>
+          </h1>
 
-          <p className="text-md  text-gray-100 leading-relaxed font-medium mb-6">
+          <p className="text-lg  text-gray-100 leading-relaxed font-medium mb-6">
             Vritti is on a mission to transform careers and companies in the oil
             & gas sector—by putting real skills and readiness at the heart of
             every opportunity.
