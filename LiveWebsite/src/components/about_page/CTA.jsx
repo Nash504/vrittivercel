@@ -20,14 +20,22 @@ export default function HeroSection() {
       style={CTAStyle}
     >
       {/* Content Aligner */}
-      <div className="z-10 w-full max-w-xl text-center md:mr-[5vw] md:text-left lg:mr-[10vw]">
+      <div className="z-10 w-full max-w-xl text-center md:mr-[5vw] md:text-left lg:-mr-[10vw]">
         {/* Main Heading */}
-        <h2 className="text-4xl font-bold leading-tight md:text-5xl">
-          Ready to upskill, get certified, or hire truly job-ready talent?
+        <h2 className="text-2xl font-bold leading-tight sm:text-4xl">
+          Ready to upskill,
+          <span>
+            <br />
+          </span>{" "}
+          get certified, or hire
+          <span>
+            <br />
+          </span>{" "}
+          truly job-ready talent?
         </h2>
 
         {/* Subheading */}
-        <p className="mt-4 text-lg font-bold text-gray-300">
+        <p className="mt-4 text-sm sm:text-lg font-medium text-gray-300">
           Start your journey with Vritti today.
         </p>
 

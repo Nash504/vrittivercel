@@ -17,22 +17,27 @@ export default function PartnersSection() {
 
   return (
     <section className="bg-white py-16">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-10">
+      <div className="container mx-auto px-4">
+        <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-12 text-center sm:text-left">
           Our Partners & Supporters
         </h2>
 
-        {/* Horizontal scroll if too many logos */}
-        <div className="flex justify-center gap-10 overflow-x-auto whitespace-nowrap pb-4">
+        {/* --- CHANGE: Added `flex-wrap` and simplified the flex classes --- */}
+        <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
           {partners.map((partner, index) => (
-            <div key={index} className="flex-shrink-0">
+            // The container for each logo
+            <div
+              key={index}
+              // Removed flex-shrink-0 as it's not needed with flex-wrap
+              className="w-40 h-24 md:w-48 md:h-28 relative"
+            >
+              {/* Using fill and object-contain for uniform sizing is correct */}
               <Image
                 src={partner.src}
                 alt={partner.alt}
-                width={0}
-                height={0}
-                sizes="80vw"
-                className="w-48 h-auto object-contain"
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 50vw, 33vw"
               />
             </div>
           ))}

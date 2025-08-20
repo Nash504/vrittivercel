@@ -1,86 +1,114 @@
-// components/JobPlatformSection.js
-import Image from "next/image";
-import YellowVrittiLogo from "../../assets/YellowVrittiLogo.png";
-import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
+"use client";
 
-// Data for the team members.
+import React from "react";
+import Image from "next/image";
+import { Card } from "../ui/card";
+import useIsMobile from "../../hooks/useIsMobile";
+// Carousel components
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../ui/carousel";
+import YellowVritti from "../../assets/YellowVrittiLogo.png";
+// Example placeholder image (replace with your assets)
+const memberImage =
+  "https://images.pexels.com/photos/2033447/pexels-photo-2033447.jpeg";
+
+// Team members data
 const teamMembers = [
   {
     name: "Ronak Dev",
+    imageSrc: memberImage,
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
+      "Lorem ipsum elit, sed do eiusmodagna aliqua. Quis ipsum suspendisse ultrices gravida.",
   },
   {
-    name: "Ronak Dev",
+    name: "Jessica Miller",
+    imageSrc: memberImage,
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
+      "Lorem ipsum do tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.",
   },
   {
-    name: "Ronak Dev",
+    name: "Samuel Chen",
+    imageSrc: memberImage,
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
+      "Lorem ipsum do tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.",
   },
 ];
 
-// A dedicated sub-component for the team member card for cleaner code.
-const TeamMemberCard = ({ name, description }) => (
-  <Card className="bg-[#28292d] border-none text-white flex flex-col overflow-hidden">
-    <CardHeader>
+// Glass card design
+const TeamMemberCard = ({ name, description, imageSrc }) => (
+  <Card className="relative border-none rounded-2xl overflow-hidden group shadow-lg transition-transform duration-300 hover:scale-[1.02]">
+    {/* Image */}
+    <div className=" w-full h-92">
       <Image
-        src={YellowVrittiLogo}
-        alt={`${name}'s profile`}
-        className="w-full h-24 object-cover"
+        src={imageSrc}
+        alt={name}
+        fill
+        className="object-cover transition-transform duration-500 group-hover:scale-105"
       />
-    </CardHeader>
-    <CardContent className="bg-black/10 backdrop-blur-lg ">
-      <h3 className="text-lg font-bold mb-3">{name}</h3>
-      <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
-    </CardContent>
+    </div>
+
+    {/* Overlay */}
+    <div
+      className="absolute bottom-0 left-0 right-0 p-6 
+      bg-gradient-to-t from-black/70 via-black/40 to-transparent 
+      backdrop-blur-md"
+    >
+      <h3 className="text-xl font-bold text-white mb-2">{name}</h3>
+      <p className="text-gray-200 text-sm leading-relaxed">{description}</p>
+    </div>
   </Card>
 );
 
-export default function JobPlatformSection() {
-  const jobStyle = {
-    backgroundImage: `url(${YellowVrittiLogo.src})`,
+export default function MeetTheTeamSection() {
+  const isMobile = useIsMobile();
+  const BgStyle = {
+    backgroundImage: `url(${isMobile ? YellowVritti.src : YellowVritti.src})`,
     backgroundSize: "cover",
-    backgroundPosition: "center",
+    backgroundPosition: isMobile ? "center top" : "center",
     backgroundRepeat: "no-repeat",
-    backgroundColor: "#1A202C",
+    backgroundColor: "#000000", // Fallback color
   };
+
   return (
-    <section style={jobStyle}>
-      <div className="relative z-10 container mx-auto px-4 py-16">
-        {/* Section Title - Text color is white to be visible on the dark background */}
-        <h2 className="text-4xl font-bold text-blue-950 mb-12">
-          Meet the Team
-        </h2>
-
-        {/* Grid container for the team cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
-          {teamMembers.map((member, index) => (
-            <TeamMemberCard
-              key={index}
-              name={member.name}
-              description={member.description}
-            />
-          ))}
+    <section className="bg-white py-16 sm:py-20 lg:py-24">
+      <div className="container mx-auto px-4">
+        {/* Section Header */}
+        <div className="flex justify-between items-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-blue-950">
+            Meet the Team
+          </h2>
+          <div className="hidden sm:block"></div>
         </div>
 
-        {/* Pagination Dots for Carousel */}
-        <div className="flex justify-center items-center mt-12 space-x-3">
-          <button
-            aria-label="Go to slide 1"
-            className="w-3 h-3 bg-orange-500 rounded-full"
-          ></button>
-          <button
-            aria-label="Go to slide 2"
-            className="w-3 h-3 bg-gray-400 rounded-full"
-          ></button>
-          <button
-            aria-label="Go to slide 3"
-            className="w-3 h-3 bg-gray-400 rounded-full"
-          ></button>
-        </div>
+        {/* Carousel */}
+        <Carousel
+          opts={{ align: "start", loop: true }}
+          className="w-full max-w-6xl mx-auto"
+        >
+          <CarouselContent className="-ml-4">
+            {teamMembers.map((member, index) => (
+              <CarouselItem
+                key={index}
+                className="pl-4 md:basis-1/2 lg:basis-1/3"
+              >
+                <div className="p-1">
+                  <TeamMemberCard
+                    name={member.name}
+                    description={member.description}
+                    imageSrc={member.imageSrc}
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="absolute left-[-20px]" />
+          <CarouselNext className="absolute right-[-20px]" />
+        </Carousel>
       </div>
     </section>
   );

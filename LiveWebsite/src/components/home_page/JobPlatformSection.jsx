@@ -1,12 +1,16 @@
 // components/JobPlatformSection.js
+"use client";
 import Image from "next/image";
 import YellowVrittiLogo from "../../assets/YellowVrittiLogo.png";
 import JobCard from "./JobCard"; // Import the new component
 import job2 from "../../assets/job2.webp";
-import job1 from "../../assets/job1.webp"; // Replace with actual job image path
+import job1 from "../../assets/job1.webp";
+import vrittiphone from "../../assets/vritti_phone.jpg"; // Replace with actual job image path
+import useIsMobile from "../../hooks/useIsMobile"; // Replace with actual job image path
 export default function JobPlatformSection() {
+  const isMobile = useIsMobile(); // Custom hook to check if the device is mobile
   const jobStyle = {
-    backgroundImage: `url(${YellowVrittiLogo.src})`,
+    backgroundImage: `url(${isMobile ? YellowVrittiLogo.src : YellowVrittiLogo.src})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -14,7 +18,7 @@ export default function JobPlatformSection() {
   };
   return (
     <div style={jobStyle}>
-      <div className="relative z-10 container mx-auto px-4 py-16">
+      <div className="relative z-10 container mx-auto px-4 py-16 sm:pr-28">
         <div className="flex flex-col md:flex-row gap-12 max-w-6xl mx-auto">
           {/* Job Seekers Card */}
           <JobCard

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   MoveUpRight,
@@ -8,32 +9,37 @@ import {
   Zap,
   Goal,
 } from "lucide-react";
-
+import Link from "next/link";
 // Import the background image asset
 import Choose from "../../assets/Choose.png";
-
+import choose_phone from "../../assets/choose_phone.jpg";
+import useIsMobile from "../../hooks/useIsMobile";
 // A reusable component for the feature items
 const FeatureItem = ({ IconComponent, title, description }) => (
-  <div className="text-center">
-    <div className="rounded-lg w-12 h-12 sm:w-14 sm:h-14 mb-4 flex items-center justify-center mx-auto p-3">
-      <IconComponent className="w-8 h-8 text-orange-500" />
+  // The main alignment is text-left now, as per the image
+  <div className="text-left">
+    {/* --- CHANGE 1: Added a background color to the icon container --- */}
+    <div className="bg-amber-500 rounded-lg w-12 h-12 sm:w-14 sm:h-14 mb-4 flex items-center justify-center p-3">
+      <IconComponent className="w-8 h-8 text-black" />
     </div>
-    <h3 className="font-bold mb-2 text-sm sm:text-base">{title}</h3>
-    <p className="text-gray-300 text-xs sm:text-sm">{description}</p>
+    {/* --- CHANGE 2: Added the amber text color to the title --- */}
+    <h3 className="font-bold mb-2 text-base sm:text-lg ">{title}</h3>
+    <p className="text-gray-300 text-sm sm:text-base">{description}</p>
   </div>
 );
 
 export default function WhyChooseVritti() {
+  const isMobile = useIsMobile();
   const chooseStyle = {
-    backgroundImage: `url(${Choose.src})`,
+    backgroundImage: `url(${isMobile ? choose_phone.src : Choose.src})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    backgroundColor: "#1A202C",
+    backgroundColor: "#1A202C", // Fallback color
   };
   return (
     <section
-      className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white"
+      className="py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white"
       style={chooseStyle}
     >
       <div className="max-w-6xl mx-auto">
@@ -45,7 +51,7 @@ export default function WhyChooseVritti() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-x-8 lg:gap-y-12 mb-8 sm:mb-12">
           {/* Item 1: Upskilling that Pays Off */}
           <FeatureItem
-            IconComponent={TrendingUp}
+            IconComponent={TrendingUp} // This can be changed to match the icon in the image
             title="Upskilling that Pays Off"
             description="Courses designed by oil & gas experts, focused on skills employers need now."
           />
@@ -80,7 +86,7 @@ export default function WhyChooseVritti() {
 
           {/* Item 6: Long-Term Growth */}
           <FeatureItem
-            IconComponent={Goal}
+            IconComponent={Goal} // This can be changed to match the icon in the image
             title="Long-Term Growth"
             description="Keep upskilling and advancing—Vritti supports your career for the long haul."
           />
@@ -88,10 +94,12 @@ export default function WhyChooseVritti() {
 
         {/* Button */}
         <div className="text-center">
-          <button className="bg-orange-500 hover:bg-orange-600 text-black px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold inline-flex items-center text-sm sm:text-base group">
-            Upskill Now
-            <MoveUpRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2 transition-transform group-hover:translate-x-1" />
-          </button>
+          <Link href="https://org.vrittigroup.com/auth/user/register">
+            <button className="bg-amber-500 hover:bg-amber-600 text-black px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold inline-flex items-center text-sm sm:text-base group">
+              Upskill Now
+              <MoveUpRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2 transition-transform group-hover:translate-x-1" />
+            </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -5,13 +5,14 @@ import {
   CardTitle,
   CardContent,
 } from "../../components/ui/card";
+import YellowVritti from "../../assets/YellowVrittiLogo.png"; // Assuming this is used somewhere in the component
 import why from "../../assets/why.png";
 import card1 from "../../assets/card1.png";
 import card2 from "../../assets/card2.png";
 import card3 from "../../assets/card3.png";
 export default function WhyVritti() {
   const whystyle = {
-    backgroundImage: `url(${why.src})`,
+    backgroundImage: `url(${YellowVritti.src})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -40,30 +41,30 @@ export default function WhyVritti() {
   ];
 
   return (
-    <section className="bg-white py-2" style={whystyle}>
-      <div className="container mx-auto px-4">
+    <section className="py-12 sm:py-16 lg:py-20" style={whystyle}>
+      <div className=" mx-auto px-4">
         <h2 className="text-3xl font-bold mb-10 text-left text-blue-950">
           Why Vritti?
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           {items.map((item, index) => (
+            // --- CHANGE: The card now has a white background and padding ---
             <Card
               key={index}
-              className="rounded-2xl shadow-md hover:shadow-lg transition-all overflow-hidden"
+              className="rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all overflow-hidden p-4"
             >
               {/* CardHeader with background image */}
               <CardHeader
-                className="h-40 relative"
+                className="h-48 relative rounded-xl overflow-hidden" // Added overflow-hidden
                 style={{
-                  backgroundImage: item.image
-                    ? `url(${item.image.src})`
-                    : "linear-gradient(to bottom, #f3f4f6, #e5e7eb)",
+                  backgroundImage: `url(${item.image.src})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               ></CardHeader>
 
-              <CardContent className="p-6">
+              {/* CardContent no longer needs a background color */}
+              <CardContent className="p-4 pt-6">
                 <CardTitle className="text-xl font-bold mb-2">
                   {item.title}
                 </CardTitle>

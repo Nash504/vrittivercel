@@ -5,16 +5,15 @@ import { Card, CardContent } from "../ui/card";
 
 // Component for the numbered challenge cards
 const ChallengeCard = ({ number, text }) => (
-  <Card className="flex-1">
+  <Card className="flex-1 shadow-xl rounded-2xl">
     <CardContent className="flex items-center gap-6 p-8">
-      <div className="flex-shrink-0 w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-2xl">
+      <div className=" flex-shrink-0 w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center text-white font-bold text-2xl">
         {number}
       </div>
-      <p className="text-gray-600 leading-relaxed">{text}</p>
+      <p className="text-black leading-relaxed">{text}</p>
     </CardContent>
   </Card>
 );
-
 export default function OurStorySection() {
   return (
     <section className="bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
@@ -22,9 +21,11 @@ export default function OurStorySection() {
         {/* Section Header */}
         <div className="text-left mb-12">
           <h2 className="text-4xl font-bold text-blue-950 mb-4">Our Story</h2>
-          <p className="text-lg text-gray-600 max-w-2xl">
-            Founded by energy sector veterans and passionate educators, Vritti
-            was created to solve two critical challenges:
+          <p className="text-md text-black font-medium max-w-2xl">
+            Founded by energy sector veterans and
+            <span className="hidden sm:block"></span>
+            passionate educators, Vritti was created to solve
+            <span className="hidden sm:block"></span> two critical challenges:
           </p>
         </div>
 
@@ -41,8 +42,9 @@ export default function OurStorySection() {
         </div>
 
         {/* Solution Card */}
-        <Card className="bg-orange-500 text-white shadow-lg">
-          <CardContent className="flex flex-col md:flex-row items-center gap-8 p-8">
+        <Card className="bg-amber-500 text-white shadow-lg">
+          {/* The grid classes are now on CardContent */}
+          <CardContent className="grid grid-cols-1 md:grid-cols-2 items-center gap-2 p-8">
             <h3 className="text-4xl font-bold flex-shrink-0">Our solution?</h3>
             <p className="text-lg leading-relaxed">
               Upskilling, certification, and a rigorous pre-interview process.

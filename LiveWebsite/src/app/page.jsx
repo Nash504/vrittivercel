@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Header from "../components/Header";
 import HeroSection from "../components/home_page/HeroSection";
@@ -11,7 +12,9 @@ import Footer from "../components/Footer";
 export default function VrittiLandingPage() {
   return (
     <div className="min-h-screen">
-      <HeroSection />
+      <div>
+        <HeroSection />
+      </div>
 
       <section className="py-8">
         <HowVrittiWorks />
@@ -33,7 +36,9 @@ export default function VrittiLandingPage() {
         <JobPlatformSection />
       </section>
 
-      <Footer />
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }

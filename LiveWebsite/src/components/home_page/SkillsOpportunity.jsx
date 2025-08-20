@@ -11,10 +11,10 @@ export default function SkillsOpportunity() {
   return (
     <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-blue-950">
           Bridging Skills & Opportunity—For Everyone
         </h2>
-        <p className="text-gray-600 mb-12 sm:mb-16 max-w-3xl mx-auto text-sm sm:text-base">
+        <p className="text-black mb-12 sm:mb-16 max-w-3xl mx-auto text-sm font-medium sm:text-base">
           Vritti isn't just about finding jobs—we empower individuals to build
           valuable skills and confidence, and present only the most job-ready
           candidates to employers. For organizations, Vritti means a trusted,

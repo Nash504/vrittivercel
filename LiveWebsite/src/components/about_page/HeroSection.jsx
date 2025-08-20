@@ -25,25 +25,28 @@ export default function HeroSection() {
 
       {/* Main Content Area */}
       <div className="flex flex-grow items-center justify-start">
-        <div className="max-w-3xl px-4 py-8 text-left lg:px-20">
+        <div className="max-w-3xl sm:ml-20 px-4 sm:py-8 pt-40 text-left lg:px-4">
           {/* Hero Text */}
-          <h1 className="text-5xl md:text-6xl font-extrabold text-orange-500 mb-4 leading-tight">
+          <p className="text-5xl md:text-5xl font-extrabold text-amber-500 mb-4 leading-tight">
             Who We Are
-          </h1>
+          </p>
 
-          <p className="text-lg md:text-xl text-gray-100 leading-relaxed font-medium mb-6">
+          <p className="text-md  text-gray-100 leading-relaxed font-medium mb-6">
             Vritti is on a mission to transform careers and companies in the oil
             & gas sector—by putting real skills and readiness at the heart of
             every opportunity.
           </p>
 
-          <p className="text-base md:text-lg text-gray-300 leading-relaxed">
+          {/* <span className="hidden sm:block"> */}
+          <p className="text-md font-medium text-gray-300 leading-relaxed">
             We’re not just a placement agency. We are educators, mentors, and
             career partners, empowering individuals to upskill, certify, and
-            step confidently into new roles. For employers, we offer a trusted
-            talent pool—every candidate is trained, verified, and
+            step confidently into new roles. For
+            <br /> employers, we offer a trusted talent pool—every candidate is
+            trained, verified, and <br />
             pre-interviewed to ensure success from day one.
           </p>
+          {/* </span> */}
         </div>
       </div>
     </section>
